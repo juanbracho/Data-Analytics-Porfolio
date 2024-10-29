@@ -1,11 +1,12 @@
 // Set up the file structure
 import React from 'react';
+import profilePic from './header.png';  // Use the newly uploaded image here
 
 const Hero = () => {
   return (
     <section className="hero">
       <div className="hero__image">
-        <img src="header.png" alt="Profile Picture" />
+        <img src={profilePic} alt="Juan Bracho Avila" />
       </div>
       <div className="hero__about">
         <h1>About Me</h1>

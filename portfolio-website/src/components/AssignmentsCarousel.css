@@ -1,0 +1,49 @@
+/* src/components/AssignmentsCarousel.css */
+.carousel {
+    margin-top: 2rem;
+    padding: 2rem;
+    position: relative;
+  }
+  
+  .carousel__container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* For Firefox */
+  }
+  
+  .carousel__container::-webkit-scrollbar {
+    display: none; /* For Chrome */
+  }
+  
+  .carousel__item {
+    min-width: 150px;
+    margin-right: 1rem;
+    text-align: center;
+  }
+  
+  .carousel__placeholder {
+    background: #ccc;
+    height: 100px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Scroll buttons */
+  .scroll-button {
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .scroll-button.left {
+    left: 10px;
+  }
+  
+  .scroll-button.right {
+    right: 10px;
+  }
+  

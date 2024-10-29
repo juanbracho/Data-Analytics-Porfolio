@@ -1,0 +1,14 @@
+/* src/components/ProjectsCarousel.css */
+.carousel {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .carousel__container {
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+  }
+  
