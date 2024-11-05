@@ -13,7 +13,7 @@ const Hero = () => {
         <p>
           I am a data analyst passionate about extracting insights from data, 
           with experience in Python, SQL, and data visualization tools.
-          I am completing a Data Analytics Bootcamp and this portfolio showcases my work.
+          I am completing a Data Analytics Bootcamp and this portfolio showcases the work done during this course.
         </p>
         <p>LinkedIn: <a href="https://www.linkedin.com/in/juan-bracho-avila-71250a121/" target="_blank">Juan Bracho Avila</a></p>
       </div>

@@ -3,10 +3,23 @@ import React, { useRef } from 'react';
 import './AssignmentsCarousel.css';
 
 const assignments = [
-  'Excel', 'VBA', 'Python', 'Data Analysis w/ Python', 'Data Visualization w/ Python', 
-  'Python APIs', 'SQL', 'Advanced SQL', 'Data Collection', 'NoSQL Databases',
-  'Interactive Visualizations', 'Mapping', 'Tableau', 'Unsupervised Learning', 
-  'Supervised Learning', 'Neural Networks and Deep Learning', 'Big Data'
+  { name: 'Excel', thumbnail: 'placeholder.png', github: 'https://github.com/juanbracho/UT_Module1' },
+  { name: 'VBA', thumbnail: 'placeholder.png', github: 'https://github.com/juanbracho/UT_Module2' },
+  { name: 'Python', thumbnail: 'placeholder.png', github: 'https://github.com/juanbracho/UT_Module3' },
+  { name: 'Data Analysis w/ Python', thumbnail: 'placeholder.png', github: 'https://github.com/juanbracho/UT_Module4' },
+  { name: 'Data Visualization w/ Python', thumbnail: 'placeholder.png', github: 'https://github.com/juanbracho/UT_Module5' },
+  { name: 'Python APIs', thumbnail: 'placeholder.png', github: 'https://github.com/juanbracho/UT_Module6' },
+  { name: 'SQL', thumbnail: 'placeholder.png', github: 'https://github.com/juanbracho/UT_Module9' },
+  { name: 'Advanced SQL', thumbnail: 'placeholder.png', github: 'https://github.com/juanbracho/UT_Module10' },
+  { name: 'Data Collection', thumbnail: 'placeholder.png', github: 'https://github.com/juanbracho/UT_Module11' },
+  { name: 'NoSQL Databases', thumbnail: 'placeholder.png', github: 'https://github.com/juanbracho/UT_Module12' },
+  { name: 'Interactive Visualizations', thumbnail: 'placeholder.png', github: 'https://github.com/juanbracho/UT_Module14' },
+  { name: 'Mapping', thumbnail: 'placeholder.png', github: 'https://github.com/juanbracho/UT_Module15' },
+  { name: 'Tableau', thumbnail: 'placeholder.png', github: 'https://github.com/juanbracho/UT_Module18' },
+  { name: 'Unsupervised Learning', thumbnail: 'placeholder.png', github: 'https://github.com/juanbracho/UT_Module19' },
+  { name: 'Supervised Learning', thumbnail: 'placeholder.png', github: 'https://github.com/juanbracho/UT_Module20' },
+  { name: 'Neural Networks and Deep Learning', thumbnail: 'placeholder.png', github: 'https://github.com/juanbracho/UT_Module21' },
+  { name: 'Big Data', thumbnail: 'placeholder.png', github: 'https://github.com/juanbracho/UT_Module22' },
 ];
 
 const AssignmentsCarousel = () => {
@@ -48,8 +61,13 @@ const AssignmentsCarousel = () => {
       >
         {assignments.map((assignment, index) => (
           <div key={index} className="carousel__item">
-            <div className="carousel__placeholder">[Placeholder Image]</div>
-            <p>{assignment}</p>
+            <img
+              src={assignment.thumbnail}
+              alt={`${assignment.name} thumbnail`}
+              className="carousel__thumbnail"
+              onClick={() => window.open(assignment.github, '_blank')}
+            />
+            <p>{assignment.name}</p>
           </div>
         ))}
       </div>
