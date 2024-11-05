@@ -1,18 +1,20 @@
-// Main App Component
+// src/App.js
 import React from 'react';
+import Header from './components/Header';
 import Hero from './components/Hero';
 import AssignmentsCarousel from './components/AssignmentsCarousel';
 import ProjectsCarousel from './components/ProjectsCarousel';
-import ThemeToggle from './components/ThemeToggle';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <ThemeToggle />
-      <Hero />
-      <AssignmentsCarousel />
-      <ProjectsCarousel />
+      <Header /> {/* Ensure this line is included */}
+      <main>
+        <Hero />
+        <AssignmentsCarousel />
+        <ProjectsCarousel />
+      </main>
     </div>
   );
 }

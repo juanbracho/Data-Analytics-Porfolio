@@ -1,5 +1,5 @@
 // Create a simple carousel for Assignments
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import './AssignmentsCarousel.css';
 
 const assignments = [
@@ -24,27 +24,51 @@ const assignments = [
 
 const AssignmentsCarousel = () => {
   const carouselRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  useEffect(() => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollLeft = 0;
+      updateScrollButtons();
+    }
+  }, []);
+
+  const updateScrollButtons = () => {
+    const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+    const buffer = 5; // Adjustable for visibility
+
+    setCanScrollLeft(scrollLeft > buffer);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - buffer);
+  };
 
   const scrollLeft = () => {
-    carouselRef.current.scrollBy({ left: -150, behavior: 'smooth' });
+    if (canScrollLeft) {
+      carouselRef.current.scrollBy({ left: -150, behavior: 'smooth' });
+      setTimeout(updateScrollButtons, 200);
+    }
   };
 
   const scrollRight = () => {
-    carouselRef.current.scrollBy({ left: 150, behavior: 'smooth' });
+    if (canScrollRight) {
+      carouselRef.current.scrollBy({ left: 150, behavior: 'smooth' });
+      setTimeout(updateScrollButtons, 200);
+    }
   };
 
   const handleDrag = (e) => {
     let startX = e.clientX;
-    let scrollLeft = carouselRef.current.scrollLeft;
+    let initialScrollLeft = carouselRef.current.scrollLeft;
 
     const mouseMove = (e) => {
       const dx = e.clientX - startX;
-      carouselRef.current.scrollLeft = scrollLeft - dx;
+      carouselRef.current.scrollLeft = initialScrollLeft - dx;
     };
 
     const mouseUp = () => {
       document.removeEventListener('mousemove', mouseMove);
       document.removeEventListener('mouseup', mouseUp);
+      updateScrollButtons();
     };
 
     document.addEventListener('mousemove', mouseMove);
@@ -52,27 +76,27 @@ const AssignmentsCarousel = () => {
   };
 
   return (
-    <section className="carousel">
+    <section className="assignments-carousel">
       <h2>Assignments</h2>
       <div
-        className="carousel__container"
+        className="assignments-carousel__container"
         ref={carouselRef}
         onMouseDown={handleDrag}
       >
         {assignments.map((assignment, index) => (
-          <div key={index} className="carousel__item">
+          <div key={index} className="assignments-carousel__item">
             <img
               src={assignment.thumbnail}
               alt={`${assignment.name} thumbnail`}
-              className="carousel__thumbnail"
+              className="assignments-carousel__thumbnail"
               onClick={() => window.open(assignment.github, '_blank')}
             />
             <p>{assignment.name}</p>
           </div>
         ))}
       </div>
-      <div className="scroll-button left" onMouseEnter={scrollLeft} />
-      <div className="scroll-button right" onMouseEnter={scrollRight} />
+      {canScrollLeft && <div className="scroll-button left" onMouseEnter={scrollLeft} />}
+      {canScrollRight && <div className="scroll-button right" onMouseEnter={scrollRight} />}
     </section>
   );
 };

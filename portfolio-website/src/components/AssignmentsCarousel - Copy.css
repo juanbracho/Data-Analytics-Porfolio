@@ -1,0 +1,58 @@
+/* src/components/AssignmentsCarousel.css */
+
+.assignments-carousel {
+  margin-top: 2rem;
+  padding: 2rem;
+  position: relative;
+  text-align: center;
+  background-color: var(--section-bg-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.assignments-carousel h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  text-align: center;
+  color: var(--header-text-color);
+  background-color: var(--section-bg-color);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+.assignments-carousel__container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  padding: 1rem 0;
+  scrollbar-width: none; /* Hide scrollbar on Firefox */
+}
+
+.assignments-carousel__container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar on Chrome */
+}
+
+.assignments-carousel__item {
+  flex: 0 0 auto; /* Prevent items from shrinking */
+  width: 150px;    /* Set a fixed width for uniformity */
+  text-align: center;
+}
+
+.assignments-carousel__thumbnail {
+  width: 150px;        /* Fixed width */
+  height: 200px;       /* Fixed height */
+  object-fit: cover;   /* Crop image to fit container */
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  transition: transform 0.2s;
+}
+
+.assignments-carousel__thumbnail:hover {
+  transform: scale(1.05); /* Zoom effect on hover */
+}
+
+.assignments-carousel__item p {
+  font-size: 1rem;
+  color: var(--header-text-color);
+}
