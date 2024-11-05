@@ -25,15 +25,16 @@
 }
 
 .carousel__thumbnail {
-  width: 100px;         /* Adjust the thumbnail size as needed */
-  height: auto;
-  border-radius: 10px;  /* Rounded corners */
+  width: 150px;          /* Fixed width */
+  height: 200px;         /* Fixed height */
+  object-fit: cover;     /* Ensures image fills the container while maintaining aspect ratio */
+  border-radius: 10px;   /* Rounded corners */
   margin-bottom: 1rem;
   transition: transform 0.2s;
 }
 
 .carousel__thumbnail:hover {
-  transform: scale(1.05);  /* Slight zoom on hover */
+  transform: scale(1.05); /* Slight zoom on hover */
 }
 
 /* Scroll buttons */
